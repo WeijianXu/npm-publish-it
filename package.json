@@ -1,0 +1,30 @@
+{
+  "name": "npm-publish-it",
+  "version": "0.1.0",
+  "description": "A very simple npm publish tool",
+  "main": "publish.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test.js",
+    "pub": "node publish.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeijianXu/npm-publish-it.git"
+  },
+  "keywords": [
+    "npm",
+    "publish",
+    "tool",
+    "command"
+  ],
+  "author": "WeijianXu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeijianXu/npm-publish-it/issues"
+  },
+  "homepage": "https://github.com/WeijianXu/npm-publish-it#readme",
+  "dependencies": {
+    "inquirer": "^9.2.12"
+  }
+}
