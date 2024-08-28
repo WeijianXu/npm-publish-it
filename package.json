@@ -2,7 +2,7 @@
   "name": "npm-publish-it",
   "version": "0.1.0",
   "description": "A very simple npm publish tool",
-  "main": "publish.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "node test.js",
