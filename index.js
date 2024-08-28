@@ -56,7 +56,9 @@ const run = async(options = {}) => {
   const answers = await askQuestions(options);
   const { version, otp } = answers;
 
-  const commands = [`npm version ${version}`, ...(options.prePublish || []), (options.publishCommand || 'npm publish') + ' --otp=' + otp];
+  const versionCommand = version ? [`npm version ${version}`] : [];
+
+  const commands = [...versionCommand, ...(options.prePublish || []), (options.publishCommand || 'npm publish') + ' --otp=' + otp];
   try {
     await execCommand(commands);
     console.log(chalk.green.bold(`Publish ${name}@${version || currVersion} successfully!`));
