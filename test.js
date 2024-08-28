@@ -1,4 +1,4 @@
-import publish from "./publish.js";
+import publish from "./index.js";
 
 publish({
   title: 'Test this package!',
