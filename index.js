@@ -17,7 +17,7 @@ const init = (options) => {
   console.log(chalk.green('Current version：' + currVersion));
 };
 
-const askQuestions = () => {
+const askQuestions = (options) => {
   const questions = [
     {
       name: 'version',
@@ -26,6 +26,13 @@ const askQuestions = () => {
         'Please input your version:\n（<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git）\n publish again if input is empty \n',
     },
   ];
+  if (options.needOtp) {
+    questions.push({
+      type: 'input',
+      name: 'otp',
+      message: 'Please input the npm otp: ',
+    });
+  }
   return inquirer.prompt(questions);
 };
 
@@ -46,10 +53,10 @@ const run = async(options = {}) => {
   init(options);
 
   // ask questions
-  const answers = await askQuestions();
-  const { version } = answers;
+  const answers = await askQuestions(options);
+  const { version, otp } = answers;
 
-  const commands = [`npm version ${version}`, ...(options.prePublish || []), options.publishCommand || 'npm publish'];
+  const commands = [`npm version ${version}`, ...(options.prePublish || []), (options.publishCommand || 'npm publish') + ' --otp=' + otp];
   try {
     await execCommand(commands);
     console.log(chalk.green.bold(`Publish ${name}@${version || currVersion} successfully!`));

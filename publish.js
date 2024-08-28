@@ -1,3 +1,5 @@
 import publish from "./index.js";
 
-publish();
+publish({
+  needOtp: true
+});
